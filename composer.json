@@ -1,0 +1,16 @@
+{
+    "name": "nexylan/coding-standard",
+    "description": "The Nexylan PHP coding standard",
+    "type": "phpcodesniffer-standard",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sullivan SENECHAL",
+            "email": "soullivaneuh@gmail.com"
+        }
+    ],
+    "require": {
+        "escapestudios/symfony2-coding-standard": "^3.4",
+        "slevomat/coding-standard": "^4.8"
+    }
+}

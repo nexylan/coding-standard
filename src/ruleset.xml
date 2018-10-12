@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<ruleset name="Nexylan">
+    <description>The Nexylan coding standard.</description>
+
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property
+                name="forbiddenFunctions"
+                type="array"
+                value="
+                    delete=>unset,
+                    die=>null,
+                    dump=>null,
+                    echo=>null,
+                    exit=>null,
+                    print=>null,
+                    sizeof=>count,
+                    var_dump=>null
+                "
+            />
+        </properties>
+    </rule>
+
+    <rule ref="PSR1"/>
+    <rule ref="PSR2">
+        <exclude name="Generic.Files.LineLength.TooLong"/>
+        <exclude name="Generic.Files.LineLength.MaxExceeded"/>
+    </rule>
+
+    <rule ref="Symfony">
+        <exclude name="Symfony.Commenting.License"/>
+        <exclude name="Symfony.Commenting.Annotations.Invalid"/>
+        <exclude name="Symfony.Commenting.ClassComment.Missing"/>
+        <exclude name="Zend.NamingConventions.ValidVariableName.MemberVarContainsNumbers"/>
+        <!-- @see https://github.com/djoos/Symfony-coding-standard/issues/120 -->
+        <exclude name="Symfony.Commenting.FunctionComment"/>
+        <!-- @see https://github.com/djoos/Symfony-coding-standard/issues/119 -->
+        <exclude name="Symfony.Functions.ReturnType.Invalid"/>
+        <!-- @see https://github.com/djoos/Symfony-coding-standard/issues/27 -->
+        <exclude name="PEAR.Functions.FunctionCallSignature"/>
+        <!-- @see https://github.com/djoos/Symfony-coding-standard/issues/44 -->
+        <exclude name="Squiz.Strings.ConcatenationSpacing"/>
+        <!-- @see https://github.com/djoos/Symfony-coding-standard/issues/122 -->
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.ContentAfterBrace"/>
+        <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore"/>
+        <exclude name="PEAR.WhiteSpace.ScopeClosingBrace.Line"/>
+        <exclude name="Symfony.Formatting.BlankLineBeforeReturn.Invalid"/>
+        <!-- https://github.com/djoos/Symfony-coding-standard/issues/123 -->
+        <exclude name="Symfony.Formatting.ReturnOrThrow.Invalid"/>
+    </rule>
+
+    <!-- @see https://github.com/djoos/Symfony-coding-standard/issues/121 -->
+    <rule ref="Symfony.NamingConventions.ValidClassName.InvalidAbstractName">
+        <exclude-pattern>*TestCase.php</exclude-pattern>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard">
+        <exclude name="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.DisallowEmpty"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.DisallowShortTernaryOperator"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousExceptionNaming"/>
+        <exclude name="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
+        <exclude name="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectLinesCountBetweenDifferentAnnotationsTypes"/>
+        <exclude name="SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter"/>
+        <exclude name="SlevomatCodingStandard.Operators.DisallowIncrementAndDecrementOperators"/>
+        <exclude name="SlevomatCodingStandard.Operators.RequireOnlyStandaloneIncrementAndDecrementOperators"/>
+        <!-- This rule should be enable later with a high diff review. -->
+        <exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.NewWithoutParentheses"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/>
+        <!-- @see https://github.com/slevomat/coding-standard/issues/245 -->
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces"/>
+        <!-- @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/3471 -->
+        <exclude name="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReNoValidateFormTypeExtension.phpferenceViaFullyQualifiedNameWithoutNamespace"/>
+        <!-- @see https://github.com/slevomat/coding-standard/issues/246 -->
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions.NonFullyQualifiedException"/>
+        <!-- @see https://github.com/slevomat/coding-standard/issues/441 -->
+        <exclude name="SlevomatCodingStandard.Commenting.UselessInheritDocComment.UselessInheritDocComment"/>
+        <!-- @see https://github.com/slevomat/coding-standard/issues/518 -->
+        <exclude name="SlevomatCodingStandard.PHP.UselessParentheses"/>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.TraitUseSpacing">
+        <properties>
+            <property
+                    name="linesCountBeforeFirstUse"
+                    type="int"
+                    value="0"
+            />
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator">
+        <properties>
+            <property
+                    name="lineLengthLimit"
+                    type="int"
+                    value="120"
+            />
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
+        <properties>
+            <property name="allowFullyQualifiedNameForCollidingClasses" value="true"/>
+            <property name="allowFullyQualifiedGlobalClasses" value="true"/>
+            <property name="allowFullyQualifiedGlobalFunctions" value="true"/>
+            <property name="allowFullyQualifiedGlobalConstants" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="newlinesCountBetweenOpenTagAndDeclare" value="2"/>
+            <property name="spacesCountAroundEqualsSign" value="0"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+        <properties>
+            <property
+                name="usefulAnnotations"
+                type="array"
+                value="
+                    @after,
+                    @before,
+                    @dataProvider,
+                    @deprecated,
+                    @required,
+                    @see
+                "
+            />
+            <property name="enableEachParameterAndReturnInspection" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Types.EmptyLinesAroundTypeBraces">
+        <properties>
+            <property name="linesCountAfterOpeningBrace" value="0"/>
+            <property name="linesCountBeforeClosingBrace" value="0"/>
+        </properties>
+    </rule>
+</ruleset>
