@@ -11,6 +11,6 @@
     ],
     "require": {
         "escapestudios/symfony2-coding-standard": "^3.4",
-        "slevomat/coding-standard": "^4.8"
+        "slevomat/coding-standard": "^5.0"
     }
 }
